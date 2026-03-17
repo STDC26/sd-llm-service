@@ -17,14 +17,14 @@ async def test_canon_gated_returns_404():
 
 @pytest.mark.asyncio
 async def test_register_new_version():
-    payload = {"prompt_id":"bsa.brief_parse","prompt_version":"1.9.0","calling_system":"BSA","task_type":"structured_extraction","content":"test","canon_gate_required":false,"registered_by":"DTC","status":"active"}
+    payload = {"prompt_id":"bsa.brief_parse","prompt_version":"1.9.0","calling_system":"BSA","task_type":"structured_extraction","content":"test","canon_gate_required":False,"registered_by":"DTC","status":"active"}
     async with AsyncClient(transport=ASGITransport(app=app),base_url="http://test") as c:
         r = await c.post("/v1/llm/prompts",json=payload)
     assert r.status_code == 201
 
 @pytest.mark.asyncio
 async def test_duplicate_version_returns_409():
-    payload = {"prompt_id":"bsa.brief_parse","prompt_version":"1.0.0","calling_system":"BSA","task_type":"structured_extraction","content":"dup","canon_gate_required":false,"registered_by":"DTC","status":"active"}
+    payload = {"prompt_id":"bsa.brief_parse","prompt_version":"1.0.0","calling_system":"BSA","task_type":"structured_extraction","content":"dup","canon_gate_required":False,"registered_by":"DTC","status":"active"}
     async with AsyncClient(transport=ASGITransport(app=app),base_url="http://test") as c:
         r = await c.post("/v1/llm/prompts",json=payload)
     assert r.status_code == 409

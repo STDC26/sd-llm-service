@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-emport httpx
+import httpx
 from app.models.schemas import HealthResponse
 from app.core.config import get_settings
 

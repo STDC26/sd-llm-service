@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Query, HTTPEsueption
+from fastapi import APIRouter, Query, HTTPException
 from app.models.schemas import CostResponse, CostBreakdownItem, LimitsResponse, SystemAllocation
 from app.services.cost_service import get_call_log
 from app.core.config import get_settings
@@ -11,7 +11,7 @@ router = APIRouter()
 
 @router.get("/cost", response_model=CostResponse, tags=["Observability"])
 async def get_cost(date_from: str = Query(...), date_to: str = Query(...), calling_system: Optional[str] = Query(None), task_type: Optional[str] = Query(None), model: Optional[str] = Query(None)):
-    log = [e for e in get_call_log() if (not calling_system or e.get("calling_system")==calling_system) and (not task_type or e.get("task_type")==task_type) and (not model or except("model")==model)]
+    log = [e for e in get_call_log() if (not calling_system or e.get("calling_system")==calling_system) and (not task_type or e.get("task_type")==task_type) and (not model or e.get("model")==model)]
     n = len(log)
     total_cost = sum(e.get("cost_usd",0.0) for e in log)
     cache_hits = sum(1 for e in log if e.get("cache_hit"))
