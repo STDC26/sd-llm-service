@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "skills": {
+    "deep-implement": {
+      "source": "piercelamb/deep-implement",
+      "sourceType": "github",
+      "computedHash": "d7c908abd87dad6dcd88ea6a9550b922a0524ea87bd0e716b96904e0c8b9bc1d"
+    },
+    "deep-plan": {
+      "source": "piercelamb/deep-plan",
+      "sourceType": "github",
+      "computedHash": "4d11fa0df999f4612d0e8801bc9b780bf309986138861df2c399c876338901df"
+    },
+    "deep-project": {
+      "source": "piercelamb/deep-project",
+      "sourceType": "github",
+      "computedHash": "2ae0d276bd5ab7da85c9cba664e8962854dee786b9cabfcafa86e7a36172e4d8"
+    }
+  }
+}
